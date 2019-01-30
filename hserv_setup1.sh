@@ -76,12 +76,11 @@ then
     arch-chroot /mnt echo "KEYMAP=de-latin1" > /etc/vconsole.conf
     arch-chroot /mnt echo "FONT=lat9w-16" >> /etc/vconsole.conf
 
-    $hostname = 'hserv'
-    arch-chroot /mnt hostnamectl --no-ask-password set-hostname $hostname
+    arch-chroot /mnt hostnamectl --no-ask-password set-hostname 'hserv'
 
     echo ""
     echo "Setting hostname..."
-    arch-chroot /mnt echo hserv > /etc/hostname
+    arch-chroot /mnt echo 'hserv' > /etc/hostname
     
     # Disable PC speaker beep
     arch-chroot /mnt echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
