@@ -1,6 +1,6 @@
 echo "Base setup script for hserv (Thinkpad T60)"
 
-read -p "Continue and format the whole disc? " -n 1 -r
+read -p "Continue and format the disc? [Y/n]: " -n 1 -r
 echo    # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
