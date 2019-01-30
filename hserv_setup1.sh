@@ -6,10 +6,11 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
     echo ""
     echo "Preparing setup..."
+    pacman -Sy reflector
     mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
-    grep -E -A 1 ".*Germany.*$" /etc/pacman.d/mirrorlist.bak | sed '/--/d' > /etc/pacman.d/mirrorlist
+    reflector -c Germany -f 10 -p http --save /mnt/etc/pacman.d/mirrorlist
     timedatectl set-ntp true
-    pacman --noconfirm  -Sy git
+    pacman --noconfirm -Sy git
 
     echo ""
     echo "Partition the hard drive"
