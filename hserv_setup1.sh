@@ -7,7 +7,7 @@ then
     echo ""
     echo "Preparing setup..."
     timedatectl set-ntp true
-    pacman -Sy git
+    pacman --noconfirm  -Sy git
 
     echo ""
     echo "Partition the hard drive"
@@ -46,7 +46,7 @@ then
     
     echo ""
     echo "Installing base packages..."
-    arch-chroot /mnt pacman -Sy openssh dosfstools unrar gptfdisk btrfs-progs netctl curl wget git avahi python3 uriparser nmap python-pip mc elinks htop
+    arch-chroot /mnt pacman --noconfirm  -Sy openssh dosfstools unrar gptfdisk btrfs-progs netctl curl wget git avahi python3 uriparser nmap python-pip mc elinks htop
     
     arch-chroot /mnt systemctl enable sshd.service
     
@@ -94,7 +94,7 @@ then
     
     echo ""
     echo "Installing bootloader..."
-    arch-chroot /mnt pacman -S grub-bios
+    arch-chroot /mnt pacman --noconfirm -S grub-bios
     arch-chroot /mnt grub-install /dev/sda
     
     echo ""
