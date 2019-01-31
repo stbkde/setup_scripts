@@ -16,7 +16,7 @@ then
     echo "Partition the hard drive"
     parted /dev/sda --script -- mklabel dos
     # /dev/sda1 - root/boot
-    parted /dev/sda --script -- mkpart primary ext4 1MiB 25GiB
+    parted /dev/sda --script -- mkpart primary ext4 1MiB 25.0GiB
     parted /dev/sda --script -- set 1 boot on
     # /dev/sda2 - swap
     parted /dev/sda --script -- mkpart primary linux-swap 25.0GiB 33.0GiB
