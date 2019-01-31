@@ -17,7 +17,7 @@ then
 
     echo ""
     echo "Partition the hard drive"
-    parted /dev/sda --script -- mklabel dos
+    parted /dev/sda --script -- mklabel msdos
     # /dev/sda1 - root/boot
     parted /dev/sda --script -- mkpart primary ext4 1MiB 25.0GiB
     parted /dev/sda --script -- set 1 boot on
