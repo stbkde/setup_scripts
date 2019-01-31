@@ -6,7 +6,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
     echo ""
     echo "Preparing setup..."
-    pacman -Sy reflector
+    pacman --noconfirm -Sy reflector
     mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
     reflector -c Germany -f 10 -p http --save /etc/pacman.d/mirrorlist
     reflector -c Germany -f 10 -p http --save /mnt/etc/pacman.d/mirrorlist
