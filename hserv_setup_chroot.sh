@@ -8,8 +8,8 @@ then
     pacman -Sy reflector
     echo ""
     echo "Installing base packages..."
-    mv /mnt/etc/pacman.d/mirrorlist /mnt/etc/pacman.d/mirrorlist.bak
-    reflector -c Germany -f 10 -p http --save /mnt/etc/pacman.d/mirrorlist
+    #mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+    #reflector -c Germany -f 10 -p http --save /etc/pacman.d/mirrorlist
    
     pacman --noconfirm  -Sy openssh dosfstools unrar gptfdisk btrfs-progs netctl curl wget git avahi python3 uriparser nmap python-pip mc elinks htop
     systemctl enable sshd.service
