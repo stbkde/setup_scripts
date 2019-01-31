@@ -30,7 +30,7 @@ then
 
     echo ""
     echo "Make filesystems p_arch and p_home"
-    mkfs.ext4 -q -L p_arch /dev/sda1 -f
+    mkfs.ext4 -q -L p_arch /dev/sda1
     mkfs.btrfs -q -L p_home /dev/sda3 -f
     
     read -n 1 -s -r -p "Press any key to continue"
