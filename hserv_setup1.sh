@@ -46,8 +46,10 @@ then
     echo "Installation of base system is running..."
     pacstrap /mnt base base-devel
     
-    cp /root/setup_scripts/hserv_setup_chroot.sh /mnt/hserv_setup_chroot.sh 
-    arch-chroot /mnt sh hserv_setup_chroot.sh 
+    genfstab -U /mnt >> /mnt/etc/fstab
+    
+    cp /root/setup_scripts/hserv_setup_chroot.sh /mnt/root/hserv_setup_chroot.sh 
+    arch-chroot /mnt sh /root/hserv_setup_chroot.sh 
         
     echo "***** DONE! ******"
     echo "Rebooting in 30 seconds"
