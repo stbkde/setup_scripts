@@ -58,7 +58,7 @@ then
     
     echo ""
     echo "Installing bootloader..."
-    pacman --noconfirm -S grub-bios
+    pacman --noconfirm -S grub
     grub-install /dev/sda
     
     echo ""
@@ -68,7 +68,6 @@ then
     echo ""
     echo "Setting up the bootloader..."
     grub-mkconfig -o /boot/grub/grub.cfg
-    genfstab -U /mnt >> /mnt/etc/fstab
     
     echo ""
     echo "Setting up network connection..."
