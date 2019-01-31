@@ -48,6 +48,13 @@ then
     
     genfstab -U /mnt >> /mnt/etc/fstab
     
+    echo ""
+    fdisk -l
+    echo ""
+    
+    echo "Now I'm going to chroot on /mnt"
+    read -n 1 -s -r -p "Press any key to continue"
+    
     cp /root/setup_scripts/hserv_setup_chroot.sh /mnt/root/hserv_setup_chroot.sh 
     arch-chroot /mnt sh /root/hserv_setup_chroot.sh 
         
