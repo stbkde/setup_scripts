@@ -11,7 +11,7 @@ then
     reflector -c Germany -f 10 -p http --save /etc/pacman.d/mirrorlist
     reflector -c Germany -f 10 -p http --save /mnt/etc/pacman.d/mirrorlist
     timedatectl set-ntp true
-    pacman --noconfirm -Sy git
+    #pacman --noconfirm -Sy git
     
     read -n 1 -s -r -p "Press any key to continue"
 
