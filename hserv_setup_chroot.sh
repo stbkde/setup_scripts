@@ -5,13 +5,13 @@ read -p "Continue with setup? " -n 1 -r
 echo    # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    pacman -Sy reflector
+    pacman --noconfirm -Sy reflector
     echo ""
     echo "Installing base packages..."
     #mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
     #reflector -c Germany -f 10 -p http --save /etc/pacman.d/mirrorlist
    
-    pacman --noconfirm  -Sy openssh dosfstools unrar gptfdisk btrfs-progs netctl curl wget git avahi python3 uriparser nmap python-pip mc elinks htop
+    pacman --noconfirm -Sy openssh dosfstools unrar gptfdisk btrfs-progs netctl curl wget git avahi python3 uriparser nmap python-pip mc elinks htop
     systemctl enable sshd.service
     
     echo ""
@@ -62,7 +62,7 @@ then
     grub-install /dev/sda
     
     echo ""
-    echo "Create kernel..."
+    echo "Creating kernel..."
     mkinitcpio -p linux
 
     echo ""
@@ -71,19 +71,20 @@ then
     
     echo ""
     echo "Setting up network connection..."
-    echo "Interface=enp1s0" > /etc/netctl/ethernet-dhcp
+    echo "Interface=enp0s25" > /etc/netctl/ethernet-dhcp
     echo "Connection=ethernet" >> /etc/netctl/ethernet-dhcp
     echo "IP=static" >> /etc/netctl/ethernet-dhcp
     echo "#Address=('10.1.10.2/24')" >> /etc/netctl/ethernet-dhcp
     echo "#Gateway='10.1.10.1'" >> /etc/netctl/ethernet-dhcp
     echo "#DNS=('10.1.10.1')" >> /etc/netctl/ethernet-dhcp
     
-    netctl start ethernet-dhcp
     netctl enable ethernet-dhcp
+    #netctl start ethernet-dhcp
     
     echo ""
     echo "Creating users..."
-    useradd -m -g users,wheel -s /bin/bash stephan
+    useradd -m -g users -s /bin/bash stephan
+    echo "Please enter a password for stephan:"
     passw stephan
     echo "stephan   ALL=(ALL) ALL" >> /etc/sudoers
     
