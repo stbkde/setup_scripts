@@ -12,6 +12,8 @@ then
     reflector -c Germany -f 10 -p http --save /mnt/etc/pacman.d/mirrorlist
     timedatectl set-ntp true
     pacman --noconfirm -Sy git
+    
+    read -n 1 -s -r -p "Press any key to continue"
 
     echo ""
     echo "Partition the hard drive"
@@ -24,15 +26,21 @@ then
     # /dev/sda3 - home
     parted /dev/sda --script -- mkpart primary 33.0GiB 100%
 
+    read -n 1 -s -r -p "Press any key to continue"
+
     echo ""
     echo "Make filesystems p_arch and p_home"
     mkfs.ext4 -q -L p_arch /dev/sda1
     mkfs.btrfs -q -L p_home /dev/sda3
     
+    read -n 1 -s -r -p "Press any key to continue"
+    
     echo ""
     echo "Configuring swap..."
     mkswap -L p_swap /dev/sda2
     swapon -L p_swap
+    
+    read -n 1 -s -r -p "Press any key to continue"
     
     echo ""
     echo "Mounting filesystems..."
@@ -42,6 +50,8 @@ then
     # home
     mkdir /mnt/home
     mount /dev/sda3 /mnt/home
+    
+    read -n 1 -s -r -p "Press any key to continue"
         
     echo ""
     echo "Installation of base system is running..."
